@@ -1,18 +1,16 @@
-//首页
+//底部标签页
 import React,{ Component } from 'react'
 import ReactDOM from 'react-dom';
-import BottomTab from '../component/tab/BottomTab'
-export default class Index extends Component {
+export default class BottomTab extends Component {
     constructor(props){
         super(props);
     }
     state = {
+
     }
     render() {
         return (
-            <div>
-                <BottomTab/>
-            </div>
+            <div>JesseJia</div>
         )
     }
 }
