@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.jl.dao.UserInfoDao">
+    <resultMap type="com.jl.entity.UserInfoBean"
+               id="UserInfoMap">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="totalcount" column="login_count"/>
+        <result property="userHome" column="user_home"/>
+    </resultMap>
+    <select id="getUserInfo" resultMap="UserInfoMap">
+        SELECT * FROM login_user_info
+    </select>
+
+</mapper>
