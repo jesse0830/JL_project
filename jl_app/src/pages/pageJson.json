@@ -1,0 +1,37 @@
+{
+  "navBarData":[
+    {
+      "title":"首页"
+    }
+  ],
+  "bottomTabInfo":{
+    "title":"底部导航栏信息",
+    "data":[
+      {
+        "title":"我的足迹",
+        "iconType":"eye",
+        "render":"FootPrintIndex"
+      },
+      {
+        "title":"出行线路",
+        "iconType":"google",
+        "render":"TravelLineIndex"
+      },
+      {
+        "title":"首页",
+        "iconType":"home",
+        "render":"MainPage"
+      },
+      {
+        "title":"吃喝玩乐",
+        "iconType":"shopping",
+        "render":"AmuseIndex"
+      },
+      {
+        "title":"个人设置",
+        "iconType":"user",
+        "render":"ProfileIndex"
+      }
+    ]
+  }
+}

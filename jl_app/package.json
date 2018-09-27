@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "~3.9.3",
+    "antd-iconfont": "^3.0.3",
+    "antd-mobile": "^2.2.5",
     "antd-mobile-rn": "^2.2.1",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -87,9 +90,27 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        [
+          {
+            "libraryName": "antd",
+            "style": true
+          }
+        ]
+      ]
     ]
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "antd": "^3.9.2",
+    "babel-plugin-import": "^1.8.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "react-app-rewired": "^1.6.2"
   }
 }

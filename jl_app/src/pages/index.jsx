@@ -1,21 +1,20 @@
 //首页
 import React, {Component} from 'react'
-import BottomTab from '../component/tab/BottomTab'
-import NavBarIndex from '../component/navbar/NavBarIndex'
-import 'antd-mobile/dist/antd-mobile.css';
-
+import NavBarIndex from './component/navbar/NavBarIndex'
+import BottomBar from './component/tab/BottomBar'
+const navBarJson = require('./pageJson')
 export default class Index extends Component {
     constructor(props) {
         super(props);
+        console.log("navBarJson:::" + JSON.stringify(navBarJson))
     }
-
     state = {}
 
     render() {
         return (
             <div>
-                <NavBarIndex/>
-                <BottomTab/>
+                <NavBarIndex navbarTitle={navBarJson.navBarData[0].title}/>
+                <BottomBar/>
             </div>
         )
     }
