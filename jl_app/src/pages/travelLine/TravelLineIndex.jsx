@@ -17,25 +17,44 @@ export default class TravelLineIndex extends Component {
     };
 
     componentDidMount() {
-        map = new window.BMap.Map("container")          // 创建地图实例
-        let point = ""  // 创建点坐标
-        //获取当前位置
-        let geolocation = new window.BMap.Geolocation()
-        geolocation.getCurrentPosition(function (r) {
-            console.log("定位结果", r)
-            console.log("定位结果status", this.getStatus())
-            if (this.getStatus() == window.BMAP_STATUS_SUCCESS) {
-                point = new window.BMap.Point(r.longitude, r.latitude)  // 创建点坐标
-                let mk = new window.BMap.Marker(r.point);
-                map.addOverlay(mk);
-                map.panTo(r.point);
+        map = new window.AMap.Map('container')        // 创建地图实例
+        map.plugin('AMap.Geolocation', function() {
+            var geolocation = new window.AMap.Geolocation({
+                // 是否使用高精度定位，默认：true
+                enableHighAccuracy: true,
+                // 设置定位超时时间，默认：无穷大
+                timeout: 10000,
+                // 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+                buttonOffset: new window.AMap.Pixel(10, 20),
+                //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                zoomToAccuracy: true,
+                //  定位按钮的排放位置,  RB表示右下
+                buttonPosition: 'RB'
+            })
 
+            geolocation.getCurrentPosition()
+            window.AMap.event.addListener(geolocation, 'complete', onComplete)
+            window.AMap.event.addListener(geolocation, 'error', onError)
+
+            function onComplete (data) {
+                // data是具体的定位信息
+                console.log("定位成功",data)
+                let lng = data.position.lng
+                let lat = data.position.lat
+                map = new window.AMap.Map('container', {
+                    center:[lng,lat],
+                    zoom:16
+                })
             }
-            else {
-                console.log("定位失败")
-                point = new window.BMap.Point(116.331398, 39.897445)
+
+            function onError (data) {
+                // 定位出错
+                console.log("定位失败",data)
+                map = new window.AMap.Map('container', {
+                    center:[118.71751,31.96284],
+                    zoom:16
+                })
             }
-            map.centerAndZoom(point, 15)
         })
     }
 
