@@ -27,17 +27,18 @@ export default class BottomBar extends Component {
         this.setState({
             selectedTab:2
         })
+        console.log("高度",document.documentElement.clientHeight)
     }
 
     render() {
         console.log("bottomTabData:::::" + JSON.stringify(bottomTabData))
         return (
             <div style={this.state.fullScreen ? {
-                position: 'fixed',
+                position: 'absolute',
                 height: '100%',
                 width: '100%',
                 top: 0
-            } : {height: 400}}>
+            } : {height: document.documentElement.clientHeight-45}}>
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"

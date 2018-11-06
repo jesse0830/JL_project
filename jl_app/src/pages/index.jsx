@@ -1,5 +1,6 @@
 //首页
 import React, {Component} from 'react'
+import {SearchBar} from 'antd-mobile'
 import NavBarIndex from './component/navbar/NavBarIndex'
 import BottomBar from './component/tab/BottomBar'
 const navBarJson = require('./pageJson')
