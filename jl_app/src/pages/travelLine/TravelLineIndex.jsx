@@ -70,21 +70,6 @@ export default class TravelLineIndex extends Component {
             })
         }
         //输入自动补全
-        let autoComplate = new window.BMap.Autocomplete(    //建立一个自动完成的对象
-            {
-                // "input": "新街口",
-                // "location": "南京市",
-                // "on"
-                "input":"1",
-                "location":"南京市"
-            })
-        // let searchResultMap = ""
-        // autoComplate.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
-        //     console.log("出发地点输入补全:",e)
-        //     let _value = e.item.value;
-        //     searchResultMap = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-        //     ("search-result").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />searchResultMap = " + searchResultMap;
-        // })
     }
     onSearchComplete = () => {
         console.log("onSearchComplete")
