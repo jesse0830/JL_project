@@ -1,0 +1,30 @@
+.login-page{
+    background: url("./img/login_bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+}
+.login-page .input-main .am-list-item{
+    opacity: 0.4;
+    width: 200px;
+    border-radius: 12px;
+    margin-left: 100px;
+}
+.input-main{
+    position: absolute;
+    top: 100px;
+}
+.login-button{
+    width: 140px;
+    margin-left: 130px;
+}
+.am-button-primary{
+    background-color: aliceblue !important;
+    border-radius: 14px;
+    opacity: 0.4;
+}
+.am-button-primary span{
+    color: #000;
+}
