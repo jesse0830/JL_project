@@ -18,7 +18,8 @@ export default class TravelLineIndex extends Component {
 
     componentDidMount() {
         map = new window.AMap.Map('container')        // 创建地图实例
-        map.plugin('AMap.Geolocation', function() {
+        map.plugin(['AMap.Geolocation','AMap.Autocomplete'], function() {
+            console.log("000")
             var geolocation = new window.AMap.Geolocation({
                 // 是否使用高精度定位，默认：true
                 enableHighAccuracy: true,
@@ -55,7 +56,29 @@ export default class TravelLineIndex extends Component {
                     zoom:16
                 })
             }
+
+            console.log("111111")
+            // 实例化Autocomplete
+            var autoOptions = {
+                // input 为绑定输入提示功能的input的DOM ID
+                input: 'search-input'
+            }
+            var autoComplete= new window.AMap.Autocomplete(autoOptions);
+            console.log("2222")
         })
+        // //输入提示
+        // map.plugin('AMap.Autocomplete', function(){
+        //     console.log("111111")
+        //     // 实例化Autocomplete
+        //     var autoOptions = {
+        //         // input 为绑定输入提示功能的input的DOM ID
+        //         input: 'search-result'
+        //     }
+        //     var autoComplete= new window.AMap.Autocomplete(autoOptions);
+        //     console.log("2222")
+        //
+        //     // 无需再手动执行search方法，autoComplete会根据传入input对应的DOM动态触发search
+        // })
     }
 
     searchChangeCurrpos = (value) => {
@@ -71,9 +94,7 @@ export default class TravelLineIndex extends Component {
         }
         //输入自动补全
     }
-    onSearchComplete = () => {
-        console.log("onSearchComplete")
-    }
+
     searchChangeDespos = (value) => {
         console.log("searchChangeDespos", value)
         endPosition = value
@@ -109,7 +130,7 @@ export default class TravelLineIndex extends Component {
 
     render() {
         return (<div>
-            <SearchBar value={this.state.startPositionValue} placeholder="请输入起点" maxLength={8}
+            <SearchBar id="search-input" value={this.state.startPositionValue} placeholder="请输入起点" maxLength={8}
                        onChange={this.searchChangeCurrpos}/>
             <img className="change_position" src={require('./img/shift.png')} onClick={this.changePosition}/>
             <SearchBar value={this.state.endPositionValue} placeholder="请输入终点" maxLength={8}
@@ -118,7 +139,6 @@ export default class TravelLineIndex extends Component {
             <Button className="button_class" type="primary" disabled={this.state.buttonDisabled}
                     onClick={this.queryLine}>查询</Button>
             <div id="container" style={{width: "100%", height: document.documentElement.clientHeight - 239}}></div>
-            <div id="search-result" style={{display: "none", border: '1px solid #C0C0C0', height: 'auto',width:'150px'}}></div>
         </div>)
     }
 }
