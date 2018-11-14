@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {SearchBar, Button, WhiteSpace} from 'antd-mobile';
 import './TravelLineIndex.css'
 
-let startPosition = ""
-let endPosition = ""
-let map = ""
+let startPosition = "";
+let endPosition = "";
+let map = "";
 export default class TravelLineIndex extends Component {
     constructor(props) {
         super(props)
@@ -17,9 +17,9 @@ export default class TravelLineIndex extends Component {
     };
 
     componentDidMount() {
-        map = new window.AMap.Map('container')        // 创建地图实例
+        map = new window.AMap.Map('container');        // 创建地图实例
         map.plugin(['AMap.Geolocation','AMap.Autocomplete'], function() {
-            console.log("000")
+            console.log("000");
             var geolocation = new window.AMap.Geolocation({
                 // 是否使用高精度定位，默认：true
                 enableHighAccuracy: true,
@@ -31,17 +31,17 @@ export default class TravelLineIndex extends Component {
                 zoomToAccuracy: true,
                 //  定位按钮的排放位置,  RB表示右下
                 buttonPosition: 'RB'
-            })
+            });
 
-            geolocation.getCurrentPosition()
-            window.AMap.event.addListener(geolocation, 'complete', onComplete)
-            window.AMap.event.addListener(geolocation, 'error', onError)
+            geolocation.getCurrentPosition();
+            window.AMap.event.addListener(geolocation, 'complete', onComplete);
+            window.AMap.event.addListener(geolocation, 'error', onError);
 
             function onComplete (data) {
                 // data是具体的定位信息
-                console.log("定位成功",data)
-                let lng = data.position.lng
-                let lat = data.position.lat
+                console.log("定位成功",data);
+                let lng = data.position.lng;
+                let lat = data.position.lat;
                 map = new window.AMap.Map('container', {
                     center:[lng,lat],
                     zoom:16
@@ -50,19 +50,19 @@ export default class TravelLineIndex extends Component {
 
             function onError (data) {
                 // 定位出错
-                console.log("定位失败",data)
+                console.log("定位失败",data);
                 map = new window.AMap.Map('container', {
                     center:[118.71751,31.96284],
                     zoom:16
                 })
             }
 
-            console.log("111111")
+            console.log("111111");
             // 实例化Autocomplete
             var autoOptions = {
                 // input 为绑定输入提示功能的input的DOM ID
                 input: 'search-input'
-            }
+            };
             var autoComplete= new window.AMap.Autocomplete(autoOptions);
             console.log("2222")
         })
@@ -82,51 +82,51 @@ export default class TravelLineIndex extends Component {
     }
 
     searchChangeCurrpos = (value) => {
-        console.log("searchChangeCurrpos", value)
-        startPosition = value
+        console.log("searchChangeCurrpos", value);
+        startPosition = value;
         this.setState({
             startPositionValue: value
-        })
+        });
         if (startPosition != "" && endPosition != "") {
             this.setState({
                 buttonDisabled: false
             })
         }
         //输入自动补全
-    }
+    };
 
     searchChangeDespos = (value) => {
-        console.log("searchChangeDespos", value)
-        endPosition = value
+        console.log("searchChangeDespos", value);
+        endPosition = value;
         this.setState({
             endPositionValue: value
-        })
+        });
         if (startPosition != "" && endPosition != "") {
             this.setState({
                 buttonDisabled: false
             })
         }
-    }
+    };
     clear = () => {
 
-    }
+    };
 
     handleClick = () => {
         // this.manualFocusInst.focus();
-    }
+    };
     queryLine = () => {
         console.log("queryLine")
-    }
+    };
     changePosition = () => {
-        console.log("changePosition")
-        const tempStart = startPosition
-        startPosition = endPosition
-        endPosition = tempStart
+        console.log("changePosition");
+        const tempStart = startPosition;
+        startPosition = endPosition;
+        endPosition = tempStart;
         this.setState({
             startPositionValue: startPosition,
             endPositionValue: endPosition
         })
-    }
+    };
 
     render() {
         return (<div>

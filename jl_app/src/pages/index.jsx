@@ -3,13 +3,13 @@ import React, {Component} from 'react'
 import {SearchBar} from 'antd-mobile'
 import NavBarIndex from './component/navbar/NavBarIndex'
 import BottomBar from './component/tab/BottomBar'
-const navBarJson = require('./pageJson')
+const navBarJson = require('./pageJson');
 export default class Index extends Component {
     constructor(props) {
         super(props);
         console.log("navBarJson:::" + JSON.stringify(navBarJson))
     }
-    state = {}
+    state = {};
 
     render() {
         return (
