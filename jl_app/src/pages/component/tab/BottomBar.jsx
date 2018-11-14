@@ -6,9 +6,9 @@ import AmuseIndex from '../../amusement/AmuseIndex'
 import FootPrintIndex from '../../myFootPrint/FootPrintIndex'
 import TravelLineIndex from '../../travelLine/TravelLineIndex'
 import ProfileIndex from '../../profile/ProfileIndex'
-const pageJson = require('../../pageJson')
-const bottomTabData = pageJson.bottomTabInfo.data
-const renderContent = [<FootPrintIndex/>,<TravelLineIndex/>,<MainPage/>,<AmuseIndex/>,<ProfileIndex/>]
+const pageJson = require('../../pageJson');
+const bottomTabData = pageJson.bottomTabInfo.data;
+const renderContent = [<FootPrintIndex/>,<TravelLineIndex/>,<MainPage/>,<AmuseIndex/>,<ProfileIndex/>];
 export default class BottomBar extends Component {
     constructor(props) {
         super(props);
@@ -26,12 +26,12 @@ export default class BottomBar extends Component {
         //设置首页
         this.setState({
             selectedTab:2
-        })
+        });
         console.log("高度",document.documentElement.clientHeight)
     }
 
     render() {
-        console.log("bottomTabData:::::" + JSON.stringify(bottomTabData))
+        console.log("bottomTabData:::::" + JSON.stringify(bottomTabData));
         return (
             <div style={this.state.fullScreen ? {
                 position: 'absolute',

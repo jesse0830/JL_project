@@ -12,7 +12,7 @@ export default class NavBarIndex extends Component {
     state = {
         login: true,
         userName: 'JesseYoung'
-    }
+    };
 
     render() {
         return (
