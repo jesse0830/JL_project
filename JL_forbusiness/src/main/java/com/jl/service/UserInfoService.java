@@ -11,8 +11,14 @@ import java.util.ArrayList;
 public class UserInfoService {
     @Autowired
     private UserInfoDao userInfoDao;
-    public ArrayList<UserInfoBean> getUserInfoService(){
+    //获取所有用户信息
+    public ArrayList<UserInfoBean> getUserInfoService() {
         return userInfoDao.getUserInfo();
+    }
+
+    //登陆接口
+    public int startLogin(String userName,String password) {
+        return userInfoDao.startLogin(userName,password);
     }
 }
 

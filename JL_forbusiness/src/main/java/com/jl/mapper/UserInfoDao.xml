@@ -15,4 +15,8 @@
         SELECT * FROM login_user_info
     </select>
 
+    <select id="startLogin" resultType="int" parameterType="String">
+        SELECT COUNT(*) FROM login_user_info where user_name = #{userName} and password = #{password}
+    </select>
+
 </mapper>
