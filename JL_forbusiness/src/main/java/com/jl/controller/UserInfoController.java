@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UserInfoController {
@@ -36,13 +38,34 @@ public class UserInfoController {
         response.setCharacterEncoding("UTF-8");
         String userName = StringUtils.trimToEmpty(request.getParameter("username"));
         String passWord = StringUtils.trimToEmpty(request.getParameter("password"));
-        System.out.println("userName===" + userName);
-        System.out.println("passWord===" + passWord);
         int count = userInfoService.startLogin(userName,passWord);
         if(count > 0){
             return true;
         }
         return false;
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public Object register(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        String userName = StringUtils.trimToEmpty(request.getParameter("username"));
+        String passWord = StringUtils.trimToEmpty(request.getParameter("password"));
+
+        int count = userInfoService.register(userName,passWord);
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        if(count > 0){
+            resultMap.put("result",true);
+            resultMap.put("message","注册成功");
+            return resultMap;
+        }
+        else{
+            resultMap.put("result",false);
+            resultMap.put("message","注册失败");
+            return resultMap;
+        }
+
     }
 }
 

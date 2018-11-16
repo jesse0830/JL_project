@@ -20,5 +20,10 @@ public class UserInfoService {
     public int startLogin(String userName,String password) {
         return userInfoDao.startLogin(userName,password);
     }
+
+    //注册接口
+    public int register(String userName,String password){
+        return userInfoDao.register(userName,password);
+    }
 }
 

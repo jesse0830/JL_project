@@ -10,5 +10,9 @@ import java.util.ArrayList;
 public interface UserInfoDao {
     public ArrayList<UserInfoBean> getUserInfo();
 
+//    login
     public int startLogin(@Param("userName")String userName, @Param("password")String password);
+
+//    register
+    public int register(@Param("userName")String userName, @Param("password")String password);
 }
