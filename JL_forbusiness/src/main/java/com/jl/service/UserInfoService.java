@@ -23,6 +23,10 @@ public class UserInfoService {
 
     //注册接口
     public int register(String userName,String password){
+
+        if (checkStrIsEmpty(userName))
+            return -2;
+
         if(checkUsernameExist(userName) > 0){
             return -1;
         }
@@ -32,6 +36,14 @@ public class UserInfoService {
     //检查用户名是否存在
     public int checkUsernameExist(String userName){
         return userInfoDao.checkUsernameExist(userName);
+    }
+
+    //检查用户名是否为空
+    public boolean checkStrIsEmpty(String input){
+        if (input == null || input.trim().length() == 0)
+            return true;
+
+        return false;
     }
 }
 
