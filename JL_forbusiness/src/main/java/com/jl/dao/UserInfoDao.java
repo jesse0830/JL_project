@@ -15,4 +15,7 @@ public interface UserInfoDao {
 
 //    register
     public int register(@Param("userName")String userName, @Param("password")String password);
+
+//    检查用户名是否存在
+    public int checkUsernameExist(@Param("userName")String userName);
 }

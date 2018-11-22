@@ -23,7 +23,15 @@ public class UserInfoService {
 
     //注册接口
     public int register(String userName,String password){
+        if(checkUsernameExist(userName) > 0){
+            return -1;
+        }
         return userInfoDao.register(userName,password);
+    }
+
+    //检查用户名是否存在
+    public int checkUsernameExist(String userName){
+        return userInfoDao.checkUsernameExist(userName);
     }
 }
 

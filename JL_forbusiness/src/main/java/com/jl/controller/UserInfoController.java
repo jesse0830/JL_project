@@ -61,6 +61,11 @@ public class UserInfoController {
             return resultMap;
         }
         else{
+            if(count == -1){
+                resultMap.put("result",false);
+                resultMap.put("message","注册失败，用户名已存在");
+                return resultMap;
+            }
             resultMap.put("result",false);
             resultMap.put("message","注册失败");
             return resultMap;

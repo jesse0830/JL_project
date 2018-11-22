@@ -24,4 +24,8 @@
         INSERT INTO login_user_info (user_name,password) values (#{userName},#{password})
     </insert>
 
+    <!--检查用户名是否存在-->
+    <select id="checkUsernameExist" parameterType="String" resultType="int">
+        SELECT COUNT(*) from login_user_info where user_name = #{userName}
+    </select>
 </mapper>
