@@ -14,5 +14,18 @@
     <select id="getUserInfo" resultMap="UserInfoMap">
         SELECT * FROM login_user_info
     </select>
+    <!--登陆-->
+    <select id="startLogin" resultType="int" parameterType="String">
+        SELECT COUNT(*) FROM login_user_info where user_name = #{userName} and password = #{password}
+    </select>
 
+    <!--注册-->
+    <insert id="register" parameterType="String">
+        INSERT INTO login_user_info (user_name,password) values (#{userName},#{password})
+    </insert>
+
+    <!--检查用户名是否存在-->
+    <select id="checkUsernameExist" parameterType="String" resultType="int">
+        SELECT COUNT(*) from login_user_info where user_name = #{userName}
+    </select>
 </mapper>
