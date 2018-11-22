@@ -17,6 +17,7 @@ export default class ProfileIndex extends Component {
         this.state = {
             login : false,
             registerModal : false,
+            userName : ""
         }
     }
 
@@ -87,31 +88,34 @@ export default class ProfileIndex extends Component {
     }
 
     //注册函数
-    onRegister () {
-        // const self = this
-        // ajaxGetData({
-            // url: '/api/server/register',
-            // data: {"username":userName,"password":passWord},
-            // success: function(result) {
-            //     console.log(result)
-            //     if (result) {
-            //         Toast.info("登陆成功",2)
-            //         clearTimeout(setTimeoutId)
-            //         let setTimeoutId = setTimeout(()=>{
-            //             self.setState({
-            //          username = registerName
-        // passWord = ""
-        // registerPwd = ""
-        // registerName = ""
-            //                 registerModal : false
-            //             })
-            //         },2000)
-            //     }
-            //     else{
-            //         Toast.info("注册失败",2)
-            //     }
-            // }
-        // })
+    onRegister = () => {
+        const self = this
+        ajaxGetData({
+            url: '/api/server/register',
+            data: {"username":registerName,"password":registerPwd},
+            success: function(result) {
+                console.log(result)
+                if (result.result) {
+
+                    userName = registerName
+                    passWord = ""
+                    // registerPwd = ""
+                    // registerName = ""
+
+                    Toast.info("注册成功",2)
+                    clearTimeout(setTimeoutId)
+                    let setTimeoutId = setTimeout(()=>{
+                        self.setState({
+                            userName : userName,
+                            registerModal : false
+                        })
+                    },2000)
+                }
+                else{
+                    Toast.info("注册失败",2)
+                }
+            }
+        })
     }
 
     render() {
@@ -119,8 +123,10 @@ export default class ProfileIndex extends Component {
             <div className="login-page" style={{height: document.documentElement.clientHeight - 85}}>
                 <div className="input-main" style={{visibility:this.state.login ? "hidden" : "visible"}}>
                     <InputItem
+                        ref="userNameInput"
                         className="user-input"
                         placeholder="请输入用户名"
+                        value={registerName}
                         clear={true}
                         name="userNameInput"
                         onChange={this.userNameOnchange}/>
@@ -166,7 +172,7 @@ export default class ProfileIndex extends Component {
 
 
                         <span className="tips">
-                            建议使用手机号注册
+                            * 建议使用手机号注册
                         </span>
 
 
