@@ -28,3 +28,13 @@
 .am-button-primary span{
     color: #000;
 }
+
+.tips {
+    color:#ff9955;
+    font-size:10px;
+    text-align: left;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 15px;
+}
