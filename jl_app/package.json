@@ -6,7 +6,7 @@
     "/api": {
       "target": "http://localhost:8080",
       "pathRewrite": {
-        "^/api" : ""
+        "^/api": ""
       },
       "changeOrigin": true
     }
@@ -106,7 +106,7 @@
         [
           {
             "libraryName": "antd",
-            "style": true
+            "style": "css"
           }
         ]
       ]

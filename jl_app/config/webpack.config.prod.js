@@ -227,6 +227,18 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+            {
+                test: /\.(js|jsx|mjs)$/,
+                include: paths.appSrc,
+                loader: require.resolve('babel-loader'),
+                options: {
+                    plugins: [
+                        // 引入样式为 css
+                        // style为true 则默认引入less
+                        ['import', { libraryName: 'antd', style: 'css' }],
+                    ]
+                }
+            }
           // ** STOP ** Are you adding a new loader?
           // Make sure to add the new loader(s) before the "file" loader.
         ],
